@@ -1,0 +1,11 @@
+<div class="content_inner__side__content">
+  <div class="content_inner__side__content__rank">
+    <%= rank_shops.find_index(rank_shop) + 1 %>
+  </div>
+  <%= link_to (shop_path(rank_shop)) do%>
+    <%= image_tag(rank_shop.rectangle_image, height: '221.5') %>
+    <div class="content_inner__side__content__title">
+      <%= rank_shop.shop_detail %>
+    </div>
+  <% end %>
+</div>

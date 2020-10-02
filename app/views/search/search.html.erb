@@ -1,0 +1,23 @@
+<% provide(:title, "#{params[:q][:area_area_name_cont]}#{params[:q][:genres_genre_name_or_shop_name_cont]}") %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%= stylesheet_link_tag "search" %>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <title>メシテロ石川</title>
+  </head>
+  <body>
+    <%= render :partial => 'layouts/header' %>
+    <div class="content">
+      <p><%= params[:q][:area_area_name_cont] %>　<%=  params[:q][:genres_genre_name_or_shop_name_cont] %>の検索結果：<%= @count %>件
+      </p>
+      <hr>
+      <div>
+        <%= render partial: 'shop', collection: @shops %>
+      </div>
+    </div>
+  </body>
+  <footer></footer>
+</html>

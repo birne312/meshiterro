@@ -1,0 +1,161 @@
+<% provide(:title, @shop.shop_name) %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%= stylesheet_link_tag 'shops' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <title>メシテロ石川</title>
+  </head>
+  <body>
+    <%= render :partial => 'layouts/header' %>
+    <div class="shop_header">
+      <div class="shop_header_inner">
+        <!-- パンくず -->
+        <ul id="bread-crumb-list">
+          <li><%= link_to 'メシテロ石川',root_path%></li>
+          &nbsp;&gt;&nbsp;
+          <li><%= @genre.genre_name %></li>
+          &nbsp;&gt;&nbsp;
+          <li><%= @shop.shop_name%></li>
+          <hr>
+        </ul>
+        <p><%= @shop.shop_name %></p>
+        <!-- button -->
+        <div class="fav_box">
+          <!-- 行きたい -->
+          <%= render partial: './likes/like' , locals: { shop: @shop } %>
+          <!-- 行った -->
+          <%= render partial: './rates/rate' , locals: { shop: @shop, rate: @rate } %>
+        </div>
+        <br>
+        <%= @shop.hurigana %><br>
+        <!-- rating -->
+        <div class="a">
+          <div class="star_rating">
+            <div class="star_rating_front" style="width: <%= @shop_ave %>%">★★★★★</div>
+            <div class="star_rating_back">★★★★★</div>
+          </div>
+          <div class="rate_num"><%= @shop_rate %></div>
+        </div>
+        <!-- ドロップダウンメニュー -->
+        <ul class="menu">
+          <li><a href="#">トップ</a></li>
+          <li class="menu_single"><a href="#">メニュー・コース</a>
+            <ul class="menu_second-level">
+              <li><a href="#">コース</a></li>
+              <li><a href="#">料理</a></li>
+              <li><a href="#">ドリンク</a></li>
+              <li><a href="#">ランチ</a></li>
+            </ul>
+          </li>
+          <li class="menu_single"><a href="#">写真</a>
+            <ul class="menu_second-level">
+              <li><a href="#">料理</a></li>
+              <li><a href="#">ドリンク</a></li>
+              <li><a href="#">内観</a></li>
+              <li><a href="#">外観</a></li>
+              <li><a href="#">その他</a></li>
+            </ul>
+          </li>
+          <li class="menu_single"><a href="#">口コミ</a>
+            <ul class="menu_second-level">
+              <li><a href="#">口コミ</a></li>
+              <li><a href="#">評価</a></li>
+            </ul>
+          </li>
+          <li class="menu_single"><a href="#">地図</a>
+            <ul class="menu_second-level">
+              <li><a href="#">地図</a></li>
+              <li><a href="#">周辺のお店</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="shop">
+      <div class="shop_inner">
+        <div class="shop_inner_main">
+          <div class="inline">
+            <ul id="slider">
+              <% @shop.images.rectangle.all.each do |img| %>
+                <li class="slide-item">
+                  <%= image_tag(img.image.to_s)%>
+                </li>
+              <% end %>
+            </ul>
+            <ul id="thumbnail_slider">
+              <% @shop.images.rectangle.all.each do |img| %>
+                <li class="thumbnail-item">
+                  <%= image_tag(img.image.to_s)%>
+                </li>
+              <% end %>
+            </ul>
+            <hr>
+            <p class="info">店舗情報</p>
+            <table>
+              <tr>
+                <th>店名</th>
+                <td><%= @shop.shop_name %></td>
+              </tr>
+              <tr>
+                <th>住所</th>
+                <td>
+                  <p><%= @shop.address %></p>
+                  <% if @shop.address.present? %>
+                    <iframe width="475" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDaVmh3ZN5coEfSZ7QakCTZxoMhruGyK2Y &q=<%= @shop.address.html_safe %>"  allowfullscreen>
+                    </iframe>
+                  <% else %>
+                    <iframe width="475" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDaVmh3ZN5coEfSZ7QakCTZxoMhruGyK2Y &q=金沢市"  allowfullscreen>
+                    </iframe>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <th>営業時間</th>
+                <td>
+                  <%= @shop.business_hours.html_safe %>
+                </td>
+              </tr>
+              <tr>
+              </table>
+            </div>
+          </div>
+          <div class="shop_inner_side">
+            <div class="sticky">
+              <p class="phone"><%= image_tag 'phone.png', class: "phone"%>
+              <%= @shop.tel %></p>
+              <br><br><br>
+              <p class="ranking">周辺のお店ランキング</p>
+              <hr>
+              <a href="#"><%= image_tag '1.png', class: "rank" %>
+                <%= link_to image_tag( @rank_shops.first.square_image, width: '165', height: '165', class: 'shop'), shop_path(@rank_shops.first) %>
+                <p class="rank_shop_name"><%= link_to  @rank_shops.first.shop_name, shop_path(@rank_shops.first) %></p>
+              </a><br>
+              <hr>
+              <a href="#"><%= image_tag '2.png', class: "rank" %>
+                <%= link_to image_tag( @rank_shops.second.square_image, width: '165', height: '165', class: 'shop'), shop_path(@rank_shops.second) %>
+                <p class="rank_shop_name"><%= link_to  @rank_shops.second.shop_name, shop_path(@rank_shops.second) %></p>
+              </a><br>
+              <hr>
+              <a href="#"><%= image_tag '3.png', class: "rank" %>
+                <%= link_to image_tag( @rank_shops.third.square_image, width: '165', height: '165', class: 'shop'), shop_path(@rank_shops.third) %>
+                <p class="rank_shop_name"><%= link_to  @rank_shops.third.shop_name, shop_path(@rank_shops.third) %></p>
+              </a><br>
+              <hr>
+              <a href="#"><%= image_tag 'ad.jpg', class: 'ad'%></a>
+              <br><br>
+              <p class="ranking">メシテロ特集</p>
+              <hr>
+              <%= link_to image_tag( @rank_shops.first.square_image, width: '165', height: '165', class: 'fea'), shop_path(@rank_shops.first) %>
+              <a href="#"><p class="fea">金沢食材を堪能！おすすめのグルメ12選</p></a>
+              <hr>
+                <%= link_to image_tag( @rank_shops.second.square_image, width: '165', height: '165', class: 'fea'), shop_path(@rank_shops.second) %>
+              <a href="#"><p class="fea">二人の距離が近づく！デートにおすすめのお店12選</p></a>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>

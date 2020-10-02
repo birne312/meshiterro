@@ -1,0 +1,70 @@
+<% provide(:title, "マイページ") %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= stylesheet_link_tag 'users' %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <%= render :partial => "layouts/header" %>
+    <div class="navbar navbar-inverse container">
+      <ul class="navbar navbar_nav row">
+        <li class="col-md-4"><a href="#likes">いきたい<%= fa_icon 'heart', class: "fa-pink" %></a></li>
+        <li class="col-md-4"><a href="#rates">いった<%= fa_icon 'star', class: "fa-yellow" %></a></li>
+      </ul>
+    </div>
+    <div class="content container-fluid">
+      <div class="content_inner">
+        <p>&nbsp;</p>
+        <div class="likes row">
+          <% @liked_shop.each do |shop| %>
+            <div class="likes_inner col-md-6">
+              <h2 class="likes_inner__title"><%= link_to shop.shop_name, shops_show_path(shop), remote: true %></h2>
+              <% if Image.exists?(:shop_id => shop.id) %>
+                <%= image_tag shop.images.first.image.to_s %>
+              <% else %>
+                <%= image_tag 'notfound.png', width: '360' %>
+              <% end %>
+              <dl class="likes_inner__list">
+                <dt>地域</dt>
+                <dd><%= shop.area.area_name %></dd>
+                <dt>ジャンル</dt>
+                <dd><% genre = shop.genres %><%= genre.first.genre_name %></dd>
+                <dt>詳細</dt>
+                <dd><%= shop.shop_detail %></dd>
+              </dl>
+              <p>&nbsp;</p>
+            </div>
+          <% end %>
+        </div>
+        <p>&nbsp;</p>
+        <div class="rated row">
+          <% @rated_shop.each do |shop| %>
+            <div class="rated_inner col-md-6">
+              <h2 class="rated_inner__title"><%= link_to shop.shop_name, shops_show_path(shop), remote: true %></h2>
+              <% if Image.exists?(shop_id: shop.id) %>
+                <%= image_tag shop.images.first.image.to_s , width: '360' %>
+              <% else %>
+                <%= image_tag 'notfound.png', width: '360' %>
+              <% end %>
+              <dl class="rated_inner__list">
+                <dt>地域</dt>
+                <dd><%= shop.area.area_name %></dd>
+                <dt>ジャンル</dt>
+                <dd><% genre = shop.genres %><%= genre.first.genre_name %></dd>
+                <dt>詳細</dt>
+                <dd><%= shop.shop_detail %></dd>
+              </dl>
+              <p>&nbsp;</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <%= ja

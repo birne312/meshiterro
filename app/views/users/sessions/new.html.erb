@@ -1,0 +1,50 @@
+<% provide(:title, "ログイン") %>
+<head>
+  <%= stylesheet_link_tag 'users' %>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row login_body">
+      <div class="login col-md-4">
+        <%= image_tag 'logo.png',class: 'login__logo' %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="login__field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+          </div>
+          <div class="login__field">
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード" %>
+          </div>
+          <br>
+          <div class="login_actions">
+            <div><%= f.button fa_icon("caret-right", text: "ログイン"), type: 'submit', class: 'square_btn' %></div>
+          </div>
+          <div class="login_links">
+            <div>
+              <%- resource_class.omniauth_providers.each do |provider| %>
+                <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+                  <span class="square_btn login_links__google">
+                    <%= fa_icon 'google lg', text: 'Googleでログイン' %>
+                  </span>
+                <% end %>
+              <% end -%>
+              <div class="login_links__register">
+                <%= link_to new_registration_path(resource_name) do %>
+                  <%= fa_icon 'caret-right', text: '新規登録' %>
+                <% end %>
+              </div>
+              <div class="login_links__forget">
+                <%= link_to new_password_path(resource_name) do %>
+                  <%= fa_icon 'caret-right', text: 'わすれた' %>
+                <% end %>
+              </div>
+              <br>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</body>

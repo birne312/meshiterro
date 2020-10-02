@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: one
+  shop_id: one
+  day: 2018-11-02 14:06:39
+
+two:
+  user_id: two
+  shop_id: two
+  day: 2018-11-02 14:06:39

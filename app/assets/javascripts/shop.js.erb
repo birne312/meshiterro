@@ -1,0 +1,24 @@
+$(document).on('turbolinks:load',function(){
+ var mainSlider = "#slider"; //メインスライダーid
+ var thumbnailSlider = "#thumbnail_slider"; //サムネイルスライダーid
+ 
+  $(mainSlider).slick({
+    speed: 500,
+    arrows: false,
+    asNavFor: thumbnailSlider
+  });
+  $(thumbnailSlider).slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: true,
+    focusOnSelect: true,
+    asNavFor: mainSlider,
+    
+  });
+
+  //#thumbnail_sliderでクリックしたスライドをカレントにする
+  $(thumbnailSlider+" .slick-slide").on('click',function(){
+    var index = $(this).attr("data-slick-index");
+    $(thumbnailSlider).slick("slickGoTo",index,false);
+  });
+});

@@ -1,0 +1,13 @@
+<div class="content_shop">
+  <% if Image.exists?(shop_id: shop.id) %>
+    <%= link_to image_tag(shop.square_image, width: '165', height: '165'), shop_path(shop) %>
+  <% else %>
+    <%= link_to image_tag('notfound.png', width: '165', height: '165'), shop_path(shop) %>
+  <% end %>
+  <div class="content_shop__title">
+    <p><%= link_to shop.shop_name, shop_path(shop) %></p>
+  </div>
+  <div class="content_shop__detail">
+    <p><%= shop.shop_detail %></p>
+  </div>
+</div>

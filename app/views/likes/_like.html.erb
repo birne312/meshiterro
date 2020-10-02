@@ -1,0 +1,33 @@
+
+<% if user_signed_in? %>
+
+
+  <% if shop.like_user(current_user.id)%>
+  <div id="user_like">
+  <div class="shop_btn_alrdy">
+    <%= image_tag 'heart.png', height: '20', class: "heartimg" %>
+    行きたい&nbsp;<%= shop.likes_count%><br>
+    <p class="alrdy">
+      (評価済み)
+    </p>
+  </div>
+</div>
+  <% else %>
+    <div id="user_like">
+
+<div class="shop_btn">
+      <%= link_to(shop_likes_path(shop), method: :post, remote: true) do %>
+        <%= image_tag 'white_heart.png', height: '20'%>
+        行きたい
+        <%= shop.likes_count%>
+      <% end %>
+</div>
+</div>
+  <% end %>
+
+<% else %>
+<div class="shop_btn">
+  <%= image_tag 'white_heart.png', height: '20'%>
+  <p class="nouser">行きたい&nbsp;<%= shop.likes_count%></p>
+  </div>
+<% end %>

@@ -1,0 +1,36 @@
+.header {
+  position: relative;
+  width: 100%;
+  &_inner {
+    height: 100px;
+    margin: 0 auto;
+    padding: 0;
+    width: 1085px;
+    &__title {
+      float: left;
+      font-size: 25px;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+    }
+    &__login {
+      float: right;
+      margin: 10px;
+      text-align: center;
+    }
+    &_query {
+      width: 100%;
+      &__area {
+        width: 30%;
+      }
+      &__keyword {
+        width: 60%;
+      }
+      &__submit {
+        width: 10%;
+      }
+    }
+  }
+}

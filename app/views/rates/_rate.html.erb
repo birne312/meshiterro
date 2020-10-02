@@ -1,0 +1,36 @@
+<%= stylesheet_link_tag 'rates' %>
+<% if user_signed_in?  %>
+<div class="shop_btn">
+  <div class="rate_modal" data-toggle="modal" data-target="#demoNormalModal">
+    <%= image_tag 'star.png', height: '20', class: "heartimg" %>
+      行った
+    </div>
+  </div>
+  <div class="modal fade" id="demoNormalModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="demoModalTitle"><%= @shop.shop_name %>を評価する</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <%= form_for([shop, rate], url: shop_rate_path(shop, rate)) do |form| %>
+                <div class="modal-body">
+                  <%= form.number_field :rate, :class=>"form-control col-sm-7", :placeholder=>"0~5で評価" %>
+                </div>
+
+                <div class="modal-footer">
+                  <%= form.submit "送信", :class=>"btn btn-primary" %>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                </div>
+              <% end %>
+          </div>
+      </div>
+  </div>
+<% else %>
+<div class="shop_btn">
+  <%= image_tag 'white_star.png', height: '20', class: "heartimg" %>
+  行った
+</div>
+<% end %>

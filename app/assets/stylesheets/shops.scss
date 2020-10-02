@@ -1,0 +1,671 @@
+// Place all the styles related to the Shops controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  width: 100%;
+}
+.header{
+  width: 100%;
+  position:relative;
+  &_inner{
+    width: 1085px;
+    height: 100px;
+    margin: 0 auto;
+    padding: 0;
+    &__title{
+      margin: 0;
+      width: 100%;
+      float: left;
+      font-size: 25px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &__login{
+      margin: 10px;
+      text-align: center;
+      float: right;
+    }
+  }
+}
+
+.nav{
+  width: 100%;
+  height: 60px;
+  border-bottom: solid #D3D3D3 1px;
+}
+
+.nav_inner{
+  width: 1085px;
+  height: 60px;
+  margin: 0 auto;
+  padding: 0;
+  &_list{
+    list-style: none;
+    font-size: 20px;
+    padding: 15px;
+    margin-left: 200px;
+    &__content{
+      display: inline;
+      padding: 0 30px;
+      border-right:  solid #D3D3D3 1px;
+    }
+    &__fin{
+      display: inline;
+      padding: 30px;
+    }
+  }
+}
+
+.home-header{
+  width: 1440px;
+  height: 218px;
+  &_inner{
+    width: 1085px;
+    height: 100%;
+    margin: 0 auto;
+  }
+}
+
+ .list-home{
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  &__content{
+    float: left;
+    height: 218px;
+    width: 290px;
+    position: relative;
+    border-right: solid #000 1px;
+    :hover img{
+      opacity: 0.7;
+      filter: alpha(opacity=70);
+      -ms-filter: "alpha(opacity=70)";
+    }
+    &_pickup{
+      background: #f5f7f8;
+      height: 217.4px;
+      width: 215px;
+      float: left;
+      display: table;
+      p{
+        opacity: 0.7;
+        filter: alpha(opacity=70);
+        -ms-filter: "alpha(opacity=70)";
+        margin: 0;
+        vertical-align:middle;
+        text-align: center;
+        line-height: 217.4px;
+      }
+    }
+  }
+  &__title{
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+    padding: 12px;
+    bottom:0;
+    left: 0;
+  }
+}
+
+.content{
+  width: 100%;
+  height: 1000px;
+  background: #f5f7f8;
+  &_inner{
+    width: 1085px;
+    height: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    &__main{
+      height: 100%;
+      width: 690px;
+      float: left;
+      &_top{
+        width: 100%;
+        height: 80px;
+        position: relative;
+        &_title{
+          position: absolute;
+          bottom:20px;
+          left: 50px;
+          color: #000;
+        }
+        span{
+          width: 100%;
+          border-bottom: solid #D3D3D3 1px;
+        }
+      }
+      &__content{
+        height: 500px;
+        width: 620px;
+        margin: 0 auto;
+        &_head{
+          height: 200px;
+          width: 100%;
+          border-bottom: solid #D3D3D3 1px;
+          &_image{
+            float: left;
+          }
+          &_text{
+            float: left;
+            width: 360px;
+            margin-left: 25px;
+            font-size: 18px;
+          }
+        }
+        &_buttom{
+          margin: 20px 0;
+          height: 300px;
+          width: 280px;
+          float: left;
+          &_image{
+            float: left;
+          }
+          &_text{
+            margin-left: 16px;
+            width: 160px;
+            float: left;
+            font-size: 14px;
+          }
+
+        }
+      }
+    }
+    &__side{
+      width: 395px;
+      float: left;
+      &_top{
+        height: 80px;
+        width: 100%;
+        p{
+          padding-top: 40px;
+          padding-left: 50px
+        }
+      }
+      &__content{
+        position: relative;
+        margin:0 50px;
+        &__rank{
+          width: 40px;
+          position: absolute;
+          right: 0;
+          text-align: center;
+          background-color: rgba(192,192,192,0.8);
+
+          // margin: 0 auto;
+        }
+        &__title{
+          height: 60px;
+          font-size: 14px;
+          // font-weight: 00;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+//以下shops/show
+.shop_header{
+  width: 100%;
+  position: relative;
+  &_inner{
+    width: 1085px;
+    height: 100px;
+      margin: 0 auto;
+      padding: 0;
+      hr{
+        width: 1085px;
+        background-color: #fff;
+        border-top: 2px dotted #bbb;
+      }
+      /* パンくずリスト */
+      #bread-crumb-list {
+        padding: 0;
+      margin: 0;
+        width: 400px;
+      text-align: left;
+    }
+    #bread-crumb-list li {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      list-style-position:outside;
+      text-align: left;
+    }
+    #bread-crumb-list li a {
+      color: #333333; /* 通常時の文字色 */
+    }
+    #bread-crumb-list li a:hover {
+      text-decoration: underline;
+      color: #bbbbbb; /* マウスオンした時の文字色 */
+    }
+    p{
+      display: inline;
+      font-size: 30px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+  /* rating */
+  .a{
+    display: flex;
+  }
+    .star_rating{
+      overflow: hidden;
+      position: relative;
+      font-size: 25px;
+      &_front{
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        color: #ffcc33;
+      }
+      &_back{
+        color: #ccc;
+      }
+    }
+  }
+}
+.rate_num{
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.shop{
+  width: 100%;
+  position: relative;
+  display: flex;
+  &_inner{
+    width: 1085px;
+    margin: 0 auto;
+    display: flex;
+    &_main{
+      padding: 0;
+      .inline{
+        display: inline-block;
+        p.info{
+            font-weight: bold;
+            padding-left: 10px;
+            border-left: 6px solid #FFE4C4;
+        }
+        table{
+          width: 100%;
+          tr{
+            height: 60px;
+            font-size: 15px;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            th{
+              width: 150px;
+              padding: 15px;
+              background-color: #FFFFE0;
+              border-right: 1px solid #ccc;
+            }
+            td{
+              padding: 8px;
+            }
+          }
+        }
+      }
+    }
+    &_side {
+      width: 60%;
+      margin-left: 20px;
+      padding: 50px 0px 50px 50px;
+      a{
+        color: #606060;
+        font-size: 15px;
+        font-weight: bold;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+      img{
+        &.phone{
+          display: inline-block;
+          width: 30px;
+          transform: translateY(-5%)
+        }
+        &.rank{
+          margin: 0;
+          width:  30px;
+          height: 30px;
+          display: inline-block;
+        }
+        &.shop{
+          vertical-align: middle;
+          margin: 0;
+          width: 60px;
+          height: 60px;
+          display: inline-block;
+          margin-left: 2px;
+          border: 1px solid #808080;
+          object-fit: cover;
+        }
+        &.ad{
+          display: inline;
+          width: 85%;
+          margin: 0 auto;
+        }
+        &.fea{
+          width: 60px;
+          height: 60px;
+          border: 1px solid #808080;
+        }
+      }
+      p{
+        &.rank_shop_name{
+          display: inline-block;
+          margin-left: 8px;
+        }
+        &.phone{
+          display: inline;
+          font-size:34px;
+          font-weight: bold;
+          padding: 0.5em 1em;
+          color: #000;
+          background: white;
+          border-top: solid 5px #5d627b;
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+          border-radius: 5px;
+        } 
+        &.ranking{
+          display: inline;
+          font-size: 18px;
+          font-weight: bold;
+          margin-bottom: 0;
+          margin-top: 50px;
+          padding-left: 10px;
+          font-weight: bold;
+          border-left: 6px solid #FFE4C4;
+        }
+        &.fea{
+          display: inline;
+          font-size: 13px;
+          margin-left: 8px; 
+        }
+      }
+      hr{
+        border-top: 1px dotted #8c8b8b;
+      }
+    }
+  }
+}
+
+  /* スクロール追従 */
+.sticky{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+/* 行きたい/行ったボタン */
+.fav_box{
+  display: flex;
+  float: right;
+  border: solid 1px #A9A9A9;
+  border-radius: 5px;
+  padding: 13px;
+  
+  .shop_btn{
+    display: inline-block;
+    padding: 15px 14px;
+    margin: 0 10px;
+    background: #f7f7f7;
+    border-left: solid 6px #ff7c5c;/*左線*/
+    color: #9F9F9F;/*文字色*/
+    font-weight: bold;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+    :hover{
+    text-decoration: none;  
+    }
+    &_alrdy{
+      @extend .shop_btn;
+      pointer-events: none;
+      padding: 6px 17px;
+      font-size: 14px;
+      .heartimg{
+         transform: translateY(50%) translateX(-20%);
+      }
+      p.alrdy{
+        font-size: 14px;
+        padding-left: 7px;
+        margin-left: 18px;
+      }
+    }
+    p.nouser{
+      display: inline;
+      font-size: 15px;
+    }
+  }
+  .shop_btn:active {
+    box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+    transform: translateY(2px);
+  }
+}
+
+/* ドロップダウンメニュー */
+.menu {
+  list-style-type: none;
+  width: 1085px;
+  margin: 10px auto 500px;
+  padding: 0;
+}
+
+.menu > li {
+  float: left;
+  width: 20%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  &:hover{
+    -webkit-transition: all .5s;
+    transition: all .5s;
+  }
+  a{
+    display: block;
+    margin: 0;
+    padding: 16px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #111111;
+    line-height: 1;
+    text-decoration: none;
+    border: 1px #ccc dotted;
+    &:hover{
+      color: #999;
+    }
+  }
+}
+
+.menu > li.menu_single {
+  position: relative;
+  ul.menu_second-level {
+    padding: 0;
+    list-style-type: none;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    background-color: #fff;
+  }
+  &:hover ul.menu_second-level {
+    top: 50px;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* floatクリア */
+.menu:before,
+.menu:after {
+  content: " ";
+  display: table;
+}
+
+.menu:after {
+  clear: both;
+}
+
+.menu {
+  zoom: 1;
+}
+
+.horizontal-list {
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+  
+// slick
+.slick-initialized{
+  opacity: 1
+}
+
+#slider,#thumbnail_slider{
+  transform: translateX(-3%);
+  width: 630px;
+}
+.slide-item{
+  img{
+    margin-top: 15px;
+    width: 590px;
+    height: 400px;
+    object-fit: cover;
+    border: 3px #ccc solid;
+  }  
+}
+.thumbnail-item{
+  img{
+    width: 170px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px #ccc solid;
+    margin: 0 auto;
+  } 
+}
+
+
+
+@charset 'UTF-8';
+/* Icons */
+@font-face{
+    font-family: 'slick';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('slick.eot');
+    src: url('slick.eot?#iefix') format('embedded-opentype'), url('slick.woff') format('woff'), url('slick.ttf') format('truetype'), url('slick.svg#slick') format('svg');
+}
+@font-face{
+  font-family: "arrow";
+  src: font-url('slick.ttf');
+}
+
+/* Arrows */
+.slick-prev,
+.slick-next
+{
+    font-size: 0;
+    line-height: 0;
+
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus
+{
+    color: transparent;
+    outline: none;
+    background: transparent;
+}
+.slick-prev:hover:before,
+.slick-prev:focus:before,
+.slick-next:hover:before,
+.slick-next:focus:before
+{
+    opacity: 1;
+}
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before
+{
+    opacity: .25;
+}
+
+.slick-prev:before,
+.slick-next:before
+{
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 1;
+
+    opacity: .75;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev
+{
+    left: 17px;
+}
+[dir='rtl'] .slick-prev
+{
+    right: -25px;
+    left: auto;
+}
+.slick-prev:before
+{
+    content: '←';
+}
+[dir='rtl'] .slick-prev:before
+{
+    content: '→';
+}
+
+.slick-next
+{
+    right: -25px;
+}
+[dir='rtl'] .slick-next
+{
+    right: auto;
+    left: -25px;
+}
+.slick-next:before
+{
+    content: '→';
+}
+[dir='rtl'] .slick-next:before
+{
+    content: '←';
+}

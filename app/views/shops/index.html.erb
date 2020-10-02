@@ -1,0 +1,69 @@
+<% provide(:title, "トップページ") %>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%= stylesheet_link_tag "shops" %>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <title>メシテロ石川</title>
+  </head>
+  <body>
+    <%= render :partial => 'layouts/header' %>
+    <div class="nav">
+      <div class="nav_inner">
+        <ul class="nav_inner_list">
+          <li class="nav_inner_list__content">トップ</li>
+          <li class="nav_inner_list__content">PickUp</li>
+          <li class="nav_inner_list__content"><%= link_to 'ラーメン',genres_ramen_path %></li>
+          <li class="nav_inner_list__content"><%= link_to '寿司',genres_sushi_path %></li>
+          <li class="nav_inner_list__content">居酒屋</li>
+          <li class="nav_inner_list__fin">+</li>
+        </ul>
+      </div>
+    </div>
+    <div class="home-header">
+      <div class="home-header_inner">
+        <ul class="list-home">
+          <%= render partial: 'shops/shop' ,collection: @shops %>
+          <li class="list-home__content_pickup">
+            <a href="">
+              <p>本日のピックアップ</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content_inner">
+        <div class="content_inner__main">
+          <div class="content_inner__main_top">
+            <%= link_to 'ラーメン',genres_ramen_path, class: "content_inner__main_top_title"%>
+            <span></span>
+          </div>
+          <div class="content_inner__main__content">
+            <div class="content_inner__main__content_head">
+              <img class="content_inner__main__content_head_image" src="<%= @ramen_shop.rectangle_image %>" height="160">
+              <div class="content_inner__main__content_head_text"><%= @ramen_shop.shop_detail %></div>
+            </div>
+            <div class="content_inner__main__content_buttom">
+              <img class="content_inner__main__content_buttom_image" src="<%= @ramen_shop.square_image %>" height="100">
+              <div class="content_inner__main__content_buttom_text"><%= @ramen_shop.shop_detail %></div>
+            </div>
+            <div class="content_inner__main__content_buttom">
+              <img class="content_inner__main__content_buttom_image" src="<%= @ramen_shop.square_image %>" height="100">
+              <div class="content_inner__main__content_buttom_text"><%= @ramen_shop.shop_detail %></div>
+            </div>
+          </div>
+        </div>
+        <div class="content_inner__side">
+          <div class="content_inner__side_top">
+            <p>ランキング総合</p>
+          </div>
+          <%= render partial: 'shops/rank_shop', collection: @rank_shops, locals: { rank_shops: @rank_shops } %>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer></footer>
+</html>

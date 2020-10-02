@@ -1,0 +1,76 @@
+// Place all。。。。。。。。。。。。content_shop。 the styles related to the Genres controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  width: 100%;
+}
+.header{
+  width: 100%;
+  position:relative;
+  &_inner{
+    width: 1085px;
+    height: 100px;
+    margin: 0 auto;
+    padding: 0;
+    &__title{
+      margin: 0;
+      width: 100%;
+      float: left;
+      font-size: 25px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &__login{
+      margin: 10px;
+      text-align: center;
+      float: right;
+    }
+  }
+}
+
+.content{
+  width: 1025px;
+  margin: 0 auto;
+  margin-top: 50px;
+  hr{
+    border-top: 1px dotted #8c8b8b;
+  }
+  &_shop{
+    display: inline-block;
+    vertical-align: top;
+    height:290px;
+    padding: 16px;
+    margin: 6px 2px;
+    color: #5d627b;
+    background: white;
+    border-top: solid 3px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    object-fit: cover;
+    a:hover{
+      text-decoration: none;
+    }
+    &__title{
+      text-align: center;
+      margin-top: 5px;
+      p{
+        display: inline;
+        font-size: 15px;
+        font-weight: bold;
+        color: #606060;
+      }
+    }
+    &__detail{
+      margin-top: 8px;
+      width: 165px;
+      p{
+        font-size: 12px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        margin: 0;
+      }
+    }
+  }
+}

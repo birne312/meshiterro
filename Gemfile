@@ -63,7 +63,6 @@ group :development do
   gem 'rails_real_favicon'
   gem 'web-console', '>= 3.3.0'
   gem 'rails-erd'
-  gem 'listen'
 end
 
 group :test do

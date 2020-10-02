@@ -1,0 +1,27 @@
+<header class="header">
+  <div class="header_inner container">
+    <div class="header_inner__title col-md-5"><%= link_to image_tag("logo.png", width: '100%'), root_path %></div>
+    <% if user_signed_in? %>
+      <div class="header_inner__login"><%= link_to 'マイページ', user_likes_path(current_user) %></div>
+      <div class="header_inner__login"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></div>
+    <% else %>
+      <div class="header_inner__login"><%= link_to '新規登録', new_user_registration_path %></div>
+      <div class="header_inner__login"><%= link_to 'ログイン', new_user_session_path %></div>
+    <% end %>
+    <%= search_form_for(@query, url: search_path) do |f| %>
+      <div class="input-group col-md-7">
+        <div class="header_inner_query__area">
+          <%= f.collection_select( :area_area_name_cont, Area.all, :area_name, :area_name, {include_blank: "エリア", selected: 0}, {class: "form-control"})  %>
+        </div>
+        <div class="header_inner_query__keyword">
+          <%= f.search_field :genres_genre_name_or_shop_name_cont, class: 'form-control', placeholder: "キーワード"%>
+        </div>
+        <div class="header_inner_query__submit">
+          <span class="input-group-btn">
+            <%= f.submit '検索', class: 'btn btn-info' %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,273 @@
+// Place all the styles related to the Shops controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+$sp: 480px;  // スマホ
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+body {
+  width: 100%;
+}
+
+// FontAwesome
+.fa-pink {
+  color: #ff5473
+}
+
+.fa-yellow {
+  color: #fff855
+}
+// FontAwesomeここまで
+
+// 星評価
+.__rating {
+  @include sp {
+    text-align: center;
+  }
+}
+.rating {
+  position: relative;
+  width: 5em;
+  height: 1em;
+  font-size: 25px;
+  &_front {
+    position: absolute;
+    // top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #fff855;
+  }
+  &_back {
+    color: #ccc;
+  }
+}
+// 星評価ここまで
+img {
+  width: 90%;
+  object-fit: cover;
+}
+
+.login_body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 100vh;
+  background-image: url(/images/bg.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+
+.login {
+  height: 65%;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255,0.8);
+  margin-right: auto;
+  margin-left: auto;
+  width: auto;
+  text-align: center;
+  button[type="submit"],
+  input {
+    width: 70%;
+  }
+  &_links {
+    width: 70%;
+    margin: auto;
+    &__register {
+      float: left;
+    }
+    &__forget {
+      text-align: right;
+    }
+    &__google {
+      width: 300px;
+    }
+  }
+
+  &__logo {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  &__field {
+    font-size: 120%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+}
+
+.square_btn {
+    font-size: 110%;
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    background-color: #fff;
+    color: #ed0000;
+    border: solid 2px #ed0000;
+    border-radius: 3px;
+    transition: .4s;
+    // margin-top: 5%;
+    margin-bottom: 5px;
+    &:hover{
+      background: #ed0000;
+      color: #fff;
+    }
+}
+
+.nav {
+  width: 100%;
+  height: 60px;
+  border-bottom: solid #d3d3d3 1px;
+  background-color: #ccffa3;
+}
+
+.nav_inner {
+  @include pc {
+    width: 80%;
+  }
+  @include sp {
+    width: 100%;
+  }
+  height: 60px;
+  margin: 0 auto;
+  padding: 0;
+
+  &_list {
+    font-size: 20px;
+    list-style: none;
+    margin-left: 200px;
+    padding: 15px;
+
+    &__content {
+      border-right: solid #d3d3d3 1px;
+      display: inline;
+      padding: 0 30px;
+    }
+
+    &__fin {
+      display: inline;
+      padding: 30px;
+    }
+  }
+}
+
+.content {
+  width: 100%;
+  &_inner {
+    margin: 0 auto;
+    padding: 0;
+      width: 80%;        &:before {
+      content: '';
+      padding-top: 100%;
+    }
+    &_status {
+      height: 400px;
+      background-color: #fffec9;
+    }
+  }
+}
+
+
+
+.navbar {
+  padding: 0;
+  &_nav {
+    display: table;
+    margin: 0 auto;
+    width: 50%;
+    li {
+      display: table-cell;
+      float: none;
+
+      a {
+        border-left: 1px solid rgba(255, 255, 255, .75)  ;
+        border-right: 1px solid rbga(0, 0, 0, .1);
+        font-weight: bold;
+        text-align: center;
+      }
+      :last-child a {
+        border-radius: 0 3px 3px 0;
+        border-right: 0;
+      }
+    }
+  }
+}
+
+.user-header {
+  width: 1440px;
+  height: 218px;
+
+  &_inner {
+    width: 1085px;
+    height: 100%;
+    margin: 0 auto;
+  }
+}
+
+.list-home {
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__content {
+    float: left;
+    height: 218px;
+    width: 290px;
+    position: relative;
+
+    :hover img {
+      opacity: .7;
+      filter: alpha(opacity=70);
+      -ms-filter: "alpha(opacity=70)";
+    }
+
+    &_pickup {
+      background: #f5f7f8;
+      height: 217.4px;
+      width: 215px;
+      float: left;
+      display: table;
+      p {
+        opacity: .7;
+        filter: alpha(opacity=70);
+        -ms-filter: "alpha(opacity=70)";
+        margin: 0;
+        vertical-align: middle;
+        text-align: center;
+        line-height: 217.4px;
+      }
+    }
+  }
+
+  &__title {
+    position: absolute;
+    font-size: 18px;
+    color: #ffffff;
+    padding: 12px;
+    bottom: 0;
+    left: 0;
+  }
+}
