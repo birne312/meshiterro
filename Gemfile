@@ -57,6 +57,10 @@ group :development, :test do
   gem 'pry-doc'
   gem 'hirb'
   gem 'hirb-unicode'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
