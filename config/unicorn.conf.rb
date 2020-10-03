@@ -1,32 +1,22 @@
-# set lets
-$worker  = 2
-$timeout = 30
-$app_dir = "/var/www/rails/meshiterro"
-$listen  = File.expand_path 'tmp/sockets/.unicorn.sock', $app_dir
-$pid     = File.expand_path 'tmp/pids/unicorn.pid', $app_dir
-$std_log = File.expand_path 'log/unicorn.log', $app_dir
-# set config
-worker_processes  $worker
-working_directory $app_dir
-stderr_path $std_log
-stdout_path $std_log
-timeout $timeout
-listen  $listen
-pid $pid
-# loading booster
+worker_processes 2
+listen "/var/run/unicorn/unicorn.socket"
+pid '/tmp/unicorn.pid'
+log = '/var/www/rails/meshiterro/log/unicorn.log'
+stderr_path = '/var/www/rails/meshiterro/log/error.log'
+stdout_path = '/var/www/rails/meshiterro/log/unicorn.log'
 preload_app true
-# before starting processes
+GC.respond_to?(:copy_on_write_friendly=) and GC.copy_on_write_friendly = true
 before_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
-  old_pid = "#{server.config[:pid]}.oldbin"
-  if old_pid != server.pid
-    begin
-      Process.kill "QUIT", File.read(old_pid).to_i
-    rescue Errno::ENOENT, Errno::ESRCH
-    end
-  end
+defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
+old_pid = "#{ server.config[:pid] }.oldbin"
+unless old_pid == server.pid
+begin
+sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
+Process.kill :QUIT, File.read(old_pid).to_i
+rescue Errno::ENOENT, Errno::ESRCH
 end
-# after finishing processes
+end
+end
 after_fork do |server, worker|
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
+defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
 end
