@@ -51,3 +51,5 @@ test:
 production:
   <<: *default
   database: meshiterro_production
+  username: root
+  password:
